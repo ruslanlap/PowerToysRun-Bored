@@ -1,17 +1,18 @@
 <div align="center">
 
-# 😴 Bored Plugin for PowerToys Run
+# 📻 Radio Plugin for PowerToys Run
 
-<img src="Bored/Community.PowerToys.Run.Plugin.Bored/Images/bored.light.png" alt="Bored Plugin Icon" width="120" height="120">
+<img src="assets/radio_logo.png" alt="Radio Plugin Icon" width="120" height="120">
 
-### _Get random quotes, jokes, exchange rates, time, cat facts, dog pictures, and text transformations when you're bored_
+### _Instant access to 30,000+ radio stations from around the world_
 
-**Stop switching between apps to get entertainment and information.**
-Press `Alt+Space` → `bored quote` → Done! ✨
+**Stop switching to your browser to find radio streams.**
+Search and play radio stations directly from PowerToys Run → `Alt+Space` → `radio london` → Done! ✨
 
-[![Latest Release](https://img.shields.io/github/v/release/ruslanlap/PowerToysRun-Bored?style=for-the-badge&logo=github&color=b5ff3f)](https://github.com/ruslanlap/PowerToysRun-Bored/releases/latest)
-[![Total Downloads](https://img.shields.io/github/downloads/ruslanlap/PowerToysRun-Bored/total?style=for-the-badge&logo=download&color=b5ff3f)](https://github.com/ruslanlap/PowerToysRun-Bored/releases/latest)
-[![GitHub Stars](https://img.shields.io/github/stars/ruslanlap/PowerToysRun-Bored?style=for-the-badge&logo=star&color=b5ff3f)](https://github.com/ruslanlap/PowerToysRun-Bored/stargazers)
+[![Latest Release](https://img.shields.io/github/v/release/ruslanlap/PowerToysRun-Radio?style=for-the-badge&logo=github&color=b5ff3f)](https://github.com/ruslanlap/PowerToysRun-Radio/releases/latest)
+[![Total Downloads](https://img.shields.io/github/downloads/ruslanlap/PowerToysRun-Radio/total?style=for-the-badge&logo=download&color=b5ff3f)](https://github.com/ruslanlap/PowerToysRun-Radio/releases/latest)
+[![GitHub Stars](https://img.shields.io/github/stars/ruslanlap/PowerToysRun-Radio?style=for-the-badge&logo=star&color=b5ff3f)](https://github.com/ruslanlap/PowerToysRun-Radio/stargazers)
+[![Awesome PowerToys](https://awesome.re/mentioned-badge-flat.svg)](https://github.com/hlaueriksson/awesome-powertoys-run-plugins)
 
 </div>
 
@@ -21,12 +22,11 @@ Press `Alt+Space` → `bored quote` → Done! ✨
 
 <div align="center">
 
-**"Get entertained and informed without leaving PowerToys Run"**
+**"Listen to your favorite radio stations without opening a browser"**
 
-| ❌ Before                                                    | ✅ With Bored Plugin                |
+| ❌ Before                                                    | ✅ With Radio Plugin                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Open browser → Search quote API → Copy text | `Alt+Space` → `bored quote` → Enter   |
-| Open currency converter → Type values → Get result | `Alt+Space` → `bored exchange USD EUR 100` → Enter |
+| Open browser → Google → Find radio → Copy link → Open player | `Alt+Space` → `radio bbc` → Enter   |
 | 30+ seconds, lost focus                                      | **2 seconds, no context switching** |
 
 </div>
@@ -34,23 +34,30 @@ Press `Alt+Space` → `bored quote` → Done! ✨
 ### 🚀 **Quick Demo** - Try it now
 
 ```
-Alt+Space → bored quote                     # 💭 Random inspirational quote
-Alt+Space → bored joke                      # 😄 Random joke
-Alt+Space → bored exchange USD EUR 100       # 💱 Currency conversion
-Alt+Space → bored time Europe/London        # 🕒 World time lookup
-Alt+Space → bored catfact                   # 🐱 Random cat fact
-Alt+Space → bored dog                       # 🐕 Random dog picture
-Alt+Space → bored text upper Hello          # 📝 Text transformation
+Alt+Space → radio lviv              # 🇺🇦 Ukrainian stations
+Alt+Space → radio bbc               # 🌍 BBC Radio
+Alt+Space → radio jazz              # 🎵 Jazz stations
+Alt+Space → radio france            # 🇫🇷 French stations
 ```
+
+<div align="center">
+
+### 📸 How it looks
+
+<img src="assets/demo1.png" alt="Radio Plugin Demo - Search Results" width="700">
+
+_Search results with bitrate, codec, country, and tags_
+
+</div>
 
 ---
 
 **⬇️ Ready to boost your productivity?**
 
-  <a href="https://github.com/ruslanlap/PowerToysRun-Bored/releases/latest/download/Bored-1.0.0-x64.zip">
+  <a href="https://github.com/ruslanlap/PowerToysRun-Radio/releases/latest/download/Radio-1.1.0-x64.zip">
     <img src="https://img.shields.io/badge/Download_for-x64_Windows-0078d4?style=for-the-badge&logo=windows&logoColor=white" alt="Download x64">
   </a>
-  <a href="https://github.com/ruslanlap/PowerToysRun-Bored/releases/latest/download/Bored-1.0.0-ARM64.zip">
+  <a href="https://github.com/ruslanlap/PowerToysRun-Radio/releases/latest/download/Radio-1.1.0-ARM64.zip">
     <img src="https://img.shields.io/badge/Download_for-ARM64_Windows-0078d4?style=for-the-badge&logo=windows&logoColor=white" alt="Download ARM64">
   </a>
 </div>
@@ -66,12 +73,12 @@ The plugin automatically adapts to your PowerToys theme:
 <table>
 <tr>
 <td align="center" width="50%">
-<img src="Bored/Community.PowerToys.Run.Plugin.Bored/Images/bored.light.png" alt="Light Theme Icon" width="128">
+<img src="assets/radio.light.png" alt="Light Theme Icon" width="128">
 <br>
 <b>☀️ Light Theme</b>
 </td>
 <td align="center" width="50%">
-<img src="Bored/Community.PowerToys.Run.Plugin.Bored/Images/bored.dark.png" alt="Dark Theme Icon" width="128">
+<img src="assets/radio.dark.png" alt="Dark Theme Icon" width="128">
 <br>
 <b>🌙 Dark Theme</b>
 </td>
@@ -99,13 +106,13 @@ The plugin automatically adapts to your PowerToys theme:
 
 ## 📝 Overview
 
-**Bored Plugin** provides instant access to entertainment and utility features directly from PowerToys Run. Get random quotes, jokes, currency exchange rates, world time information, cat facts, dog pictures, and text transformations—all from `Alt+Space` → `bored your query`.
+**Radio Plugin** provides instant access to over 30,000 radio stations from around the world directly from PowerToys Run. Search stations by name, city, country, or genre without opening your browser. Get instant results with detailed information— all from `Alt+Space` → `radio your query`.
 
-- **Plugin ID:** `3548EB2720CF46509A8BA9044F970447`
-- **Action Keyword:** `bored` (customizable)
-- **Platform:** Windows 10/11 (version 10.0.22621.0 or higher)
-- **Tech:** C#/.NET 9.0
-- **APIs:** Free open APIs (no API keys required)
+- **Plugin ID:** `0CF5D160821B4F01A24D08E459AF3DC8`
+- **Action Keyword:** `radio` (customizable)
+- **Platform:** Windows 10/11 (x64, ARM64)
+- **Tech:** C#/.NET 9.0, Radio Browser API
+- **Database:** 30,000+ radio stations worldwide
 
 ---
 
@@ -115,53 +122,36 @@ The plugin automatically adapts to your PowerToys theme:
 <table>
 <tr>
 <td align="center" width="33%">
-<img width="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Thought%20balloon/3D/thought_balloon_3d.png">
-<br><b>💭 Random Quotes</b><br>
-<sub>Get inspirational quotes<br>from famous authors</sub>
+<img width="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Magnifying%20glass%20tilted%20left/3D/magnifying_glass_tilted_left_3d.png">
+<br><b>🔍 Smart Search</b><br>
+<sub>Search by name, city,<br>country, or genre</sub>
 </td>
-<td align="center" width="33%">
-<img width="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Grinning%20face/3D/grinning_face_3d.png">
-<br><b>😄 Random Jokes</b><br>
-<sub>Fetch funny jokes<br>to brighten your day</sub>
-</td>
-<td align="center" width="33%">
-<img width="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Money%20with%20wings/3D/money_with_wings_3d.png">
-<br><b>💱 Currency Exchange</b><br>
-<sub>Convert 160+ currencies<br>instantly</sub>
-</td>
-</tr>
-<tr>
 <td align="center" width="33%">
 <img width="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Globe%20with%20meridians/3D/globe_with_meridians_3d.png">
-<br><b>🕒 World Time</b><br>
-<sub>Look up current time<br>in any timezone</sub>
+<br><b>🌍 30,000+ Stations</b><br>
+<sub>Radio stations from<br>all over the world</sub>
 </td>
 <td align="center" width="33%">
-<img width="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Cat%20face/3D/cat_face_3d.png">
-<br><b>🐱 Cat Facts</b><br>
-<sub>Learn interesting facts<br>about cats</sub>
-</td>
-<td align="center" width="33%">
-<img width="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Dog%20face/3D/dog_face_3d.png">
-<br><b>🐕 Dog Pictures</b><br>
-<sub>View random dog<br>images</sub>
+<img width="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Musical%20notes/3D/musical_notes_3d.png">
+<br><b>🎵 Multi-Format</b><br>
+<sub>Support for MP3, AAC, OGG,<br>FLAC and more</sub>
 </td>
 </tr>
 <tr>
 <td align="center" width="33%">
-<img width="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Input%20latin%20letters/3D/input_latin_letters_3d.png">
-<br><b>📝 Text Transform</b><br>
-<sub>Transform text (upper,<br>lower, reverse, etc.)</sub>
+<img width="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Rocket/3D/rocket_3d.png">
+<br><b>⚡ Lightning Fast</b><br>
+<sub>Automatic retry with<br>multiple API mirrors</sub>
 </td>
 <td align="center" width="33%">
-<img width="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Clipboard/3D/clipboard_3d.png">
-<br><b>📋 Auto-Copy</b><br>
-<sub>Results automatically<br>copied to clipboard</sub>
+<img width="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Chart%20increasing/3D/chart_increasing_3d.png">
+<br><b>📊 Rich Metadata</b><br>
+<sub>Bitrate, codec, country,<br>tags, and language</sub>
 </td>
 <td align="center" width="33%">
 <img width="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Locked/3D/locked_3d.png">
 <br><b>🔒 Privacy First</b><br>
-<sub>No tracking, no data<br>collection, open source</sub>
+<sub>No tracking, no data collection,<br>fully open source</sub>
 </td>
 </tr>
 </table>
@@ -171,14 +161,14 @@ The plugin automatically adapts to your PowerToys theme:
 
 ## 📜 Changelog
 
+### v1.1.0
+- **Code Refactoring**: Improved code structure by separating query handling and context menu creation into dedicated classes (`QueryHandler` and `ContextMenuFactory`). This enhances maintainability and separation of concerns.
+- **Build Process**: Updated the release script (`newtag.sh`) to streamline the process of creating and rebuilding tags, making releases more reliable.
+- **API Change**: Made `FavoriteService` public to support the new refactored architecture.
+
 ### v1.0.0
-- **Initial Release** - Full feature set with quotes, jokes, exchange rates, time, cat facts, dog pictures, and text transformations
-- **Auto-copy feature** - All results automatically copied to clipboard
-- **Context menu** - Copy button (Ctrl+C) for all results
-- **Popular timezones** - Quick access to common timezones (London, New York, Tokyo, etc.)
-- **Popular currencies** - Quick access to common currency pairs
-- **Multiple APIs** - Free open APIs with no API keys required
-- **All dependencies included** - Fixed plugin loading with CopyLocalLockFileAssemblies
+- Initial release of the Radio plugin.
+- Core features include searching for radio stations, displaying results with metadata, and playing stations in the default media player.
 
 ---
 
@@ -193,15 +183,16 @@ The plugin automatically adapts to your PowerToys theme:
 - **OS**: Windows 10/11 (version 10.0.22621.0 or higher)
 - **PowerToys**: Version 0.93.0 or higher
 - **Architecture**: x64 or ARM64
-- **Internet Connection**: Required for API requests
+- **Internet Connection**: Required for searching stations
+- **Media Player**: Any player that supports streaming (VLC, Windows Media Player, etc.)
 
 ### Installation Steps
 
 1. **Download the plugin**
-    - Visit the [latest release](https://github.com/ruslanlap/PowerToysRun-Bored/releases/latest)
+    - Visit the [latest release](https://github.com/ruslanlap/PowerToysRun-Radio/releases/latest)
     - Download the appropriate ZIP file for your system:
-        - `Bored-1.0.0-x64.zip` for 64-bit Windows
-        - `Bored-1.0.0-ARM64.zip` for ARM64 Windows
+        - `Radio-1.1.0-x64.zip` for 64-bit Windows
+        - `Radio-1.1.0-ARM64.zip` for ARM64 Windows
 
 2. **Extract to PowerToys Run plugins directory**
 
@@ -220,9 +211,9 @@ The plugin automatically adapts to your PowerToys theme:
     Extract the downloaded ZIP file here. You should have:
 
     ```
-    Plugins\Bored\plugin.json
-    Plugins\Bored\Community.PowerToys.Run.Plugin.Bored.dll
-    Plugins\Bored\Images\...
+    Plugins\Radio\plugin.json
+    Plugins\Radio\Community.PowerToys.Run.Plugin.Radio.dll
+    Plugins\Radio\Images\...
     ```
 
 3. **Restart PowerToys**
@@ -232,15 +223,15 @@ The plugin automatically adapts to your PowerToys theme:
 
 4. **Verify installation**
     - Press `Alt+Space` to open PowerToys Run
-    - Type `bored` and press Enter
-    - You should see the plugin options appear
+    - Type `radio test` and press Enter
+    - You should see the plugin prompt to search for radio stations
 
 ### Uninstallation
 
 To remove the plugin:
 
 1. Navigate to `%LOCALAPPDATA%\Microsoft\PowerToys\PowerToys Run\Plugins\`
-2. Delete the `Bored` folder
+2. Delete the `Radio` folder
 3. Restart PowerToys
 
 ---
@@ -249,21 +240,21 @@ To remove the plugin:
 
 ### 1️⃣ **Download** (15 seconds)
 
-Choose your architecture from [Latest Releases](https://github.com/ruslanlap/PowerToysRun-Bored/releases/latest):
+Choose your architecture from [Latest Releases](https://github.com/ruslanlap/PowerToysRun-Radio/releases/latest):
 
-- `Bored-1.0.0-x64.zip`
-- `Bored-1.0.0-ARM64.zip`
+- `Radio-1.1.0-x64.zip`
+- `Radio-1.1.0-ARM64.zip`
 
 ### 2️⃣ **Extract to plugins directory** (30 seconds)
 
 ```
-%LOCALAPPDATA%\Microsoft\PowerToys\PowerToys Run\Plugins\Bored
+%LOCALAPPDATA%\Microsoft\PowerToys\PowerToys Run\Plugins\Radio
 ```
 
 Example:
 
 ```
-C:\Users\YourName\AppData\Local\Microsoft\PowerToys\PowerToys Run\Plugins\Bored\
+C:\Users\YourName\AppData\Local\Microsoft\PowerToys\PowerToys Run\Plugins\Radio\
 ```
 
 ### 3️⃣ **Restart PowerToys** (15 seconds)
@@ -276,46 +267,37 @@ Right-click PowerToys icon → Exit → Launch from Start menu
 
 <div align="center">
 
-### 🎯 Commands at a Glance
+### 🎯 Search Like a Pro
 
 <table>
 <tr>
 <td align="center" width="25%">
-<img width="60" height="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Thought%20balloon/3D/thought_balloon_3d.png">
-<br><b>💭 Quotes</b>
-<br><code>bored quote</code>
-</td>
-<td align="center" width="25%">
-<img width="60" height="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Grinning%20face/3D/grinning_face_3d.png">
-<br><b>😄 Jokes</b>
-<br><code>bored joke</code>
-</td>
-<td align="center" width="25%">
-<img width="60" height="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Money%20with%20wings/3D/money_with_wings_3d.png">
-<br><b>💱 Exchange</b>
-<br><code>bored exchange USD EUR 100</code>
-</td>
-<td align="center" width="25%">
 <img width="60" height="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Globe%20with%20meridians/3D/globe_with_meridians_3d.png">
-<br><b>🕒 Time</b>
-<br><code>bored time Europe/London</code>
-</td>
-</tr>
-<tr>
-<td align="center" width="25%">
-<img width="60" height="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Cat%20face/3D/cat_face_3d.png">
-<br><b>🐱 Cat Facts</b>
-<br><code>bored catfact</code>
+<br><b>🌍 By Country</b>
+<br><code>radio ukraine</code>
+<br><code>radio germany</code>
+<br><code>radio france</code>
 </td>
 <td align="center" width="25%">
-<img width="60" height="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Dog%20face/3D/dog_face_3d.png">
-<br><b>🐕 Dog Pictures</b>
-<br><code>bored dog</code>
+<img width="60" height="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Cityscape/3D/cityscape_3d.png">
+<br><b>🏙️ By City</b>
+<br><code>radio london</code>
+<br><code>radio paris</code>
+<br><code>radio new york</code>
 </td>
 <td align="center" width="25%">
-<img width="60" height="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Input%20latin%20letters/3D/input_latin_letters_3d.png">
-<br><b>📝 Text Transform</b>
-<br><code>bored text upper Hello</code>
+<img width="60" height="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Radio/3D/radio_3d.png">
+<br><b>📻 By Station</b>
+<br><code>radio bbc</code>
+<br><code>radio npr</code>
+<br><code>radio europa</code>
+</td>
+<td align="center" width="25%">
+<img width="60" height="60" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Musical%20notes/3D/musical_notes_3d.png">
+<br><b>🎵 By Genre</b>
+<br><code>radio jazz</code>
+<br><code>radio rock</code>
+<br><code>radio classical</code>
 </td>
 </tr>
 </table>
@@ -327,74 +309,83 @@ Right-click PowerToys icon → Exit → Launch from Start menu
 **Full Examples:**
 
 ```bash
-# 💭 Get Random Quotes
-bored quote
+# 🇺🇦 Ukrainian Radio Stations
+radio lviv
+radio kyiv
+radio ukraine
 
-# 😄 Get Random Jokes
-bored joke
+# 🌍 By City
+radio london
+radio paris
+radio new york
+radio tokyo
 
-# 💱 Currency Exchange
-bored exchange USD EUR 100      # Convert 100 USD to EUR
-bored exchange UAH EUR 100     # Convert 100 UAH to EUR
-bored exchange GBP USD 50       # Convert 50 GBP to USD
-bored exchange EUR JPY 200      # Convert 200 EUR to JPY
+# 🌐 By Country
+radio germany
+radio france
+radio usa
+radio poland
 
-# 🕒 World Time
-bored time Europe/London         # 🇬🇧 Time in London
-bored time America/New_York      # 🇺🇸 Time in New York
-bored time Asia/Tokyo           # 🇯🇵 Time in Tokyo
-bored time Australia/Sydney      # 🇦🇺 Time in Sydney
-bored time Europe/Berlin         # 🇩🇪 Time in Berlin
-bored time Asia/Shanghai         # 🇨🇳 Time in Shanghai
+# 📻 By Station Name
+radio bbc
+radio npr
+radio europa
+radio classic fm
 
-# 🐱 Cat Facts
-bored catfact
-
-# 🐕 Dog Pictures
-bored dog
-
-# 📝 Text Transformations
-bored text upper Hello World     # HELLO WORLD
-bored text lower Hello World     # hello world
-bored text reverse Hello         # olleH
-bored text title hello world     # Hello World
+# 🎵 By Genre (in name)
+radio jazz
+radio rock
+radio classical
+radio news
+radio folk
 ```
 
 </div>
 
+### What makes a good query?
+
+✅ **Good queries**:
+
+```
+radio bbc world service
+radio jazz stations
+radio ukrainian music
+```
+
+❌ **Avoid**:
+
+```
+radio                # Too general (min 2 characters)
+radio [very long text over 200 characters...]  # Too long
+```
+
 ### Actions on Results
 
-- **Enter** - Execute command and copy result to clipboard automatically
-- **Ctrl+C** - Copy result to clipboard manually
-- **Right-click** - Show context menu with copy option
+- **Enter** - Open station in default media player
+- **Ctrl+C** - Copy stream URL to clipboard
+- **Right-click** - Show context menu with options
 
 ---
 
-## 🧪 Tech Stack
+### 🧪 Tech Stack
 
 - **Runtime**: .NET 9.0 for Windows 10.0.22621.0+
-- **APIs**: Free open APIs (zenquotes.io, official-joke-api, open.er-api.com, worldtimeapi.org, catfact.ninja, dog.ceo)
-- **Architecture**: Service-oriented with caching support
+- **API**: Radio Browser API with multiple mirror support
+- **Architecture**: Service-oriented with Models/Services/Core separation
 - **Logging**: Comprehensive logging for diagnostics
-- **Dependencies**: All Microsoft.Extensions.* packages included
 
 ### 📁 Project Structure
 
 ```
-Bored/
-├── Community.PowerToys.Run.Plugin.Bored/
+Radio/
+├── Community.PowerToys.Run.Plugin.Radio/
 │   ├── Main.cs              # Plugin entry point
-│   ├── Services/            # API clients and services
-│   │   ├── QuoteService.cs
-│   │   ├── JokeService.cs
-│   │   ├── ExchangeRateService.cs
-│   │   ├── WorldTimeService.cs
-│   │   ├── CatFactService.cs
-│   │   ├── DogService.cs
-│   │   ├── TextActionService.cs
-│   │   └── CacheService.cs
+│   ├── Core/
+│   │   ├── Models/          # Data models (RadioStation, SearchQuery, etc.)
+│   │   └── Services/        # API client, services
+│   ├── Logging/             # Logging infrastructure
 │   └── Images/              # Plugin icons
-├── Community.PowerToys.Run.Plugin.Bored.UnitTests/
+├── Community.PowerToys.Run.Plugin.Radio.UnitTests/
 │   └── ...                  # Unit tests
 └── plugin.json              # Plugin metadata
 ```
@@ -404,7 +395,7 @@ Bored/
 **Want to contribute?**
 
 [![Contribute](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge&logo=github)](CONTRIBUTING.md)
-[![Issues](https://img.shields.io/github/issues/ruslanlap/PowerToysRun-Bored?style=for-the-badge&logo=github&color=red)](https://github.com/ruslanlap/PowerToysRun-Bored/issues)
+[![Issues](https://img.shields.io/github/issues/ruslanlap/PowerToysRun-Radio?style=for-the-badge&logo=github&color=red)](https://github.com/ruslanlap/PowerToysRun-Radio/issues)
 
 </div>
 
@@ -418,11 +409,11 @@ Bored/
 
 If this plugin saves you time, star the repository and share with other developers!
 
-[![Star this repo](https://img.shields.io/badge/⭐_Star_on_GitHub-ffcc00?style=for-the-badge&logo=github&logoColor=black)](https://github.com/ruslanlap/PowerToysRun-Bored/stargazers)
-[![Tweet about it](https://img.shields.io/badge/Tweet-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/intent/tweet?text=Just%20found%20this%20amazing%20PowerToys%20Run%20plugin%20for%20entertainment!%20🚀&url=https://github.com/ruslanlap/PowerToysRun-Bored)
+[![Star this repo](https://img.shields.io/badge/⭐_Star_on_GitHub-ffcc00?style=for-the-badge&logo=github&logoColor=black)](https://github.com/ruslanlap/PowerToysRun-Radio/stargazers)
+[![Tweet about it](https://img.shields.io/badge/Tweet-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/intent/tweet?text=Just%20found%20this%20amazing%20PowerToys%20Run%20plugin%20for%20Radio!%20🚀&url=https://github.com/ruslanlap/PowerToysRun-Radio)
 
-- 🐛 [Report Bugs](https://github.com/ruslanlap/PowerToysRun-Bored/issues)
-- 💡 [Request Features](https://github.com/ruslanlap/PowerToysRun-Bored/issues)
+- 🐛 [Report Bugs](https://github.com/ruslanlap/PowerToysRun-Radio/issues)
+- 💡 [Request Features](https://github.com/ruslanlap/PowerToysRun-Radio/issues)
 - 🤝 [Contribute](CONTRIBUTING.md)
 - 📢 [Awesome PowerToys Plugins](https://github.com/hlaueriksson/awesome-powertoys-run-plugins)
 
@@ -435,42 +426,43 @@ If this plugin saves you time, star the repository and share with other develope
 <details>
 <summary><b>Plugin not showing up?</b></summary>
 
-- ✅ **Check path**: `%LOCALAPPDATA%\Microsoft\PowerToys\PowerToys Run\Plugins\Bored`
+- ✅ **Check path**: `%LOCALAPPDATA%\Microsoft\PowerToys\PowerToys Run\Plugins\Radio`
 - ✅ **Check files**: Ensure `plugin.json` and DLL files exist
-- ✅ **Check dependencies**: Verify Microsoft.Extensions.* DLLs are present
 - ✅ **Restart**: Fully exit and restart PowerToys (don't just minimize)
 - ✅ **Windows version**: Requires Windows 10.0.22621.0 or higher
-- ✅ **Enable plugin**: PowerToys Settings → PowerToys Run → Plugins → Bored (enabled)
+- ✅ **Enable plugin**: PowerToys Settings → PowerToys Run → Plugins → Radio (enabled)
 
 </details>
 
 <details>
-<summary><b>Commands not working?</b></summary>
+<summary><b>No search results?</b></summary>
 
 - ✅ **Internet**: Check connection (required for API requests)
-- ✅ **Command format**: Ensure you're using the correct command syntax
-- ✅ **Wait**: API requests take 1-2 seconds
-- ✅ **Try again**: Some APIs may be temporarily unavailable
+- ✅ **Query length**: Ensure query is 2-200 characters
+- ✅ **Keyword**: Ensure you're using the `radio` prefix (or your custom one)
+- ✅ **Wait**: First search takes 2-3 seconds for API response
+- ✅ **Try other terms**: Use English city/country names
 
 </details>
 
 <details>
-<summary><b>"Cannot initialize Bored plugin" error?</b></summary>
-
-- ✅ **Check DLLs**: Ensure all Microsoft.Extensions.* DLLs are present
-- ✅ **Re-download**: Get the latest release which includes all dependencies
-- ✅ **Version**: Use version 1.0.0 or higher (includes CopyLocalLockFileAssemblies fix)
-- ✅ **Logs**: Check `%LOCALAPPDATA%\Microsoft\PowerToys\PowerToys Run\Plugins\Bored\log.txt`
-
-</details>
-
-<details>
-<summary><b>Exchange rate or time not working?</b></summary>
+<summary><b>"All Mirrors Failed" error?</b></summary>
 
 - ✅ **Check internet**: Ensure connection is working
-- ✅ **Currency codes**: Use 3-letter codes (USD, EUR, GBP, etc.)
-- ✅ **Timezone format**: Use format like `Europe/London`, `America/New_York`
-- ✅ **Try popular examples**: Use the suggested timezones and currency pairs
+- ✅ **VPN**: Temporarily disable VPN
+- ✅ **Firewall**: Check Windows Firewall settings
+- ✅ **Wait**: Servers might be temporarily unavailable
+- ✅ **Logs**: Check `%LOCALAPPDATA%\Microsoft\PowerToys\PowerToys Run\Plugins\Radio\log.txt`
+
+</details>
+
+<details>
+<summary><b>Stations not playing?</b></summary>
+
+- ✅ **Install media player**: VLC, Windows Media Player, or other
+- ✅ **Try different stations**: Some might be offline
+- ✅ **Copy URL**: Right-click → Copy URL → Test in browser
+- ✅ **Check format**: Your player should support streaming audio
 
 </details>
 
@@ -480,45 +472,45 @@ If this plugin saves you time, star the repository and share with other develope
 
 <details>
 <summary><b>Does it work offline?</b></summary>
-No, an internet connection is required since the plugin uses free online APIs for quotes, jokes, exchange rates, time, and other features.
+No, an internet connection is required to search for stations since the plugin uses the Radio Browser API for network requests.
 </details>
 
 <details>
 <summary><b>Can I change the activation keyword?</b></summary>
-Yes! PowerToys Settings → PowerToys Run → Plugins → Bored → Change "bored" to your preference (e.g., "b", "fun").
+Yes! PowerToys Settings → PowerToys Run → Plugins → Radio → Change "radio" to your preference (e.g., "r", "fm")
 </details>
 
 <details>
-<summary><b>What currencies are supported?</b></summary>
-Over 160 currencies including USD, EUR, GBP, JPY, UAH, and many more. Supports all major world currencies.
+<summary><b>How many stations are available?</b></summary>
+Over 30,000 radio stations from around the world via Radio Browser API - a free, community-maintained database.
 </details>
 
 <details>
-<summary><b>Do I need API keys?</b></summary>
-No! All APIs are free and open, no API keys required. The plugin works out of the box.
+<summary><b>Can I copy the station URL?</b></summary>
+Yes! Press Ctrl+C or right-click on a result and select "Copy URL".
 </details>
 
 <details>
-<summary><b>What text transformations are available?</b></summary>
-upper, lower, reverse, title, and more. Type `bored text` to see all available commands.
+<summary><b>What audio formats are supported?</b></summary>
+MP3, AAC, OGG, FLAC, and more - depends on your media player's capabilities.
 </details>
 
 <details>
-<summary><b>Are results copied automatically?</b></summary>
-Yes! When you press Enter, results are automatically copied to your clipboard. You can also use Ctrl+C or right-click menu.
+<summary><b>Does it support other languages?</b></summary>
+Yes! The plugin shows stations from around the world in various languages. The interface supports UTF-8.
 </details>
 
 ---
 
 ## 🔒 Security & Privacy
 
-- ✅ **No API keys**: No sensitive credentials required
-- ✅ **Free APIs only**: Uses only free, open APIs
+- ✅ **100% local**: All data stored on your machine
 - ✅ **No tracking**: Zero analytics or telemetry
 - ✅ **Open source**: Full code transparency
+- ✅ **API only**: Access only Radio Browser API
 - ✅ **MIT License**: Free to use for any purpose
 
-**Your data stays yours.** No cloud sync, local caching only, complete privacy.
+**Your data stays yours.** No cloud sync, local logging only, complete privacy.
 
 ---
 
@@ -530,21 +522,17 @@ Released under [MIT License](LICENSE). Free to use for personal and commercial p
 
 ## 🙏 Credits
 
-**Powered by amazing open-source projects and free APIs:**
+**Powered by amazing open-source projects:**
 
 - [Microsoft PowerToys](https://github.com/microsoft/PowerToys) - Extensible productivity toolkit for Windows
-- [ZenQuotes API](https://zenquotes.io/) - Free inspirational quotes API
-- [Official Joke API](https://official-joke-api.appspot.com/) - Free jokes API
-- [Open Exchange Rate API](https://open.er-api.com/) - Free currency exchange API (160+ currencies)
-- [WorldTimeAPI](https://worldtimeapi.org/) - Free world time API
-- [Cat Facts API](https://catfact.ninja/) - Free cat facts API
-- [Dog CEO API](https://dog.ceo/) - Free dog pictures API
+- [Radio Browser API](https://www.radio-browser.info/) - Access to tens of thousands of radio stations
 - [.NET](https://dotnet.microsoft.com/) - Cross-platform development framework
+- [Community PowerToys Templates](https://github.com/hlaueriksson/Community.PowerToys.Run.Plugin.Templates) - Templates for creating plugins
 
 **Special thanks:**
 
+- Radio Browser community for maintaining the station database
 - PowerToys team for the excellent plugin architecture
-- All free API providers for making their services available
 - All contributors and users who help improve this plugin
 
 ---
@@ -556,24 +544,29 @@ Released under [MIT License](LICENSE). Free to use for personal and commercial p
 <table>
 <tr>
 <td align="center">
-<img width="50" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Thought%20balloon/3D/thought_balloon_3d.png">
-<br><b>Unlimited</b>
-<br>Quotes Available
-</td>
-<td align="center">
-<img width="50" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Money%20with%20wings/3D/money_with_wings_3d.png">
-<br><b>160+</b>
-<br>Currencies
+<img width="50" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Radio/3D/radio_3d.png">
+<br><b>30,000+</b>
+<br>Radio Stations
 </td>
 <td align="center">
 <img width="50" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Globe%20with%20meridians/3D/globe_with_meridians_3d.png">
-<br><b>Worldwide</b>
-<br>Timezones
+<br><b>200+</b>
+<br>Countries
 </td>
 <td align="center">
-<img width="50" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Grinning%20face/3D/grinning_face_3d.png">
-<br><b>Free</b>
-<br>No API Keys
+<img width="50" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Musical%20notes/3D/musical_notes_3d.png">
+<br><b>500+</b>
+<br>Genres
+</td>
+<td align="center">
+<img width="50" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Speaking%20head/3D/speaking_head_3d.png">
+<br><b>100+</b>
+<br>Languages
+</td>
+<td align="center">
+<img width="50" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Chart%20increasing/3D/chart_increasing_3d.png">
+<br><b>99.9%+</b>
+<br>API Uptime
 </td>
 </tr>
 </table>
@@ -584,15 +577,15 @@ Released under [MIT License](LICENSE). Free to use for personal and commercial p
 
 <div align="center">
 
-### 🚀 **Ready to have fun with PowerToys?**
+### 🚀 **Ready to listen to radio with PowerToys?**
 
-<a href="https://github.com/ruslanlap/PowerToysRun-Bored/releases/latest">
+<a href="https://github.com/ruslanlap/PowerToysRun-Radio/releases/latest">
 <img src="https://img.shields.io/badge/Download_Now-Success-brightgreen?style=for-the-badge&logo=download&logoColor=white" alt="Download Now">
 </a>
 
 ---
 
-**See also:** [📝 Troubleshooting](#-troubleshooting) • [🐛 Bug Reports](https://github.com/ruslanlap/PowerToysRun-Bored/issues)
+**See also:** [📝 Troubleshooting](TROUBLESHOOTING.md) • [🐛 Bug Reports](https://github.com/ruslanlap/PowerToysRun-Radio/issues)
 
 <sub>Made with ❤️ for the global community</sub>
 

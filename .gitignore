@@ -12,7 +12,7 @@
 .cursor/
 .local
 /.local/
-
+.config/
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
