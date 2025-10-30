@@ -31,47 +31,26 @@
     </None>
   </ItemGroup>
 
-  <!-- Exclude PowerToys DLLs that are already provided by PowerToys -->
-  <ItemGroup>
-    <Reference Include="PowerToys.Common.UI">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="PowerToys.ManagedCommon">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="PowerToys.Settings.UI.Lib">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Wox.Infrastructure">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Wox.Plugin">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
-      <Private>False</Private>
-    </Reference>
-  </ItemGroup>
-
-  <!-- Remove excluded DLLs after build -->
-  <Target Name="RemoveExcludedDlls" AfterTargets="CopyFilesToOutputDirectory">
+  <!-- Remove excluded DLLs after build (provided by PowerToys) -->
+  <Target Name="RemoveExcludedDlls" AfterTargets="Build">
     <ItemGroup>
-      <FilesToRemove Include="$(OutDir)PowerToys.Common.UI.dll" />
-      <FilesToRemove Include="$(OutDir)PowerToys.ManagedCommon.dll" />
-      <FilesToRemove Include="$(OutDir)PowerToys.Settings.UI.Lib.dll" />
-      <FilesToRemove Include="$(OutDir)Wox.Infrastructure.dll" />
-      <FilesToRemove Include="$(OutDir)Wox.Plugin.dll" />
-      <FilesToRemove Include="$(OutDir)Microsoft.Extensions.Logging.Abstractions.dll" />
-      <FilesToRemove Include="$(OutDir)PowerToys.Common.UI.pdb" />
-      <FilesToRemove Include="$(OutDir)PowerToys.ManagedCommon.pdb" />
-      <FilesToRemove Include="$(OutDir)PowerToys.Settings.UI.Lib.pdb" />
-      <FilesToRemove Include="$(OutDir)Wox.Infrastructure.pdb" />
-      <FilesToRemove Include="$(OutDir)Wox.Plugin.pdb" />
-      <FilesToRemove Include="$(OutDir)Microsoft.Extensions.Logging.Abstractions.pdb" />
-      <FilesToRemove Include="$(OutDir)Microsoft.Windows.SDK.NET.dll" />
-      <FilesToRemove Include="$(OutDir)WinRT.Runtime.dll" />
+      <FilesToRemove Include="$(OutDir)**\PowerToys.Common.UI.dll" />
+      <FilesToRemove Include="$(OutDir)**\PowerToys.ManagedCommon.dll" />
+      <FilesToRemove Include="$(OutDir)**\PowerToys.Settings.UI.Lib.dll" />
+      <FilesToRemove Include="$(OutDir)**\Wox.Infrastructure.dll" />
+      <FilesToRemove Include="$(OutDir)**\Wox.Plugin.dll" />
+      <FilesToRemove Include="$(OutDir)**\Microsoft.Extensions.Logging.Abstractions.dll" />
+      <FilesToRemove Include="$(OutDir)**\PowerToys.Common.UI.pdb" />
+      <FilesToRemove Include="$(OutDir)**\PowerToys.ManagedCommon.pdb" />
+      <FilesToRemove Include="$(OutDir)**\PowerToys.Settings.UI.Lib.pdb" />
+      <FilesToRemove Include="$(OutDir)**\Wox.Infrastructure.pdb" />
+      <FilesToRemove Include="$(OutDir)**\Wox.Plugin.pdb" />
+      <FilesToRemove Include="$(OutDir)**\Microsoft.Extensions.Logging.Abstractions.pdb" />
+      <FilesToRemove Include="$(OutDir)**\Microsoft.Windows.SDK.NET.dll" />
+      <FilesToRemove Include="$(OutDir)**\WinRT.Runtime.dll" />
     </ItemGroup>
     <Delete Files="@(FilesToRemove)" ContinueOnError="true" />
+    <Message Text="Removed excluded PowerToys dependencies from output" Importance="high" />
   </Target>
 
 </Project>
