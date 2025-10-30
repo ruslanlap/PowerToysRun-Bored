@@ -127,7 +127,7 @@ jobs:
                     Copy-Item -Path $imagesSrc -Destination "$artifactDir/Bored/Images" -Recurse -Force
                   }
 
-                  # Remove unnecessary files in a single operation
+                  # Remove unnecessary files recursively
                   $unnecessaryFiles = @(
                     "PowerToys.Common.UI.dll",
                     "PowerToys.ManagedCommon.dll",
@@ -136,18 +136,18 @@ jobs:
                     "Wox.Plugin.dll",
                     "Microsoft.Windows.SDK.NET.dll",
                     "WinRT.Runtime.dll",
+                    "Microsoft.Extensions.Logging.Abstractions.dll",
                     "PowerToys.Common.UI.pdb",
                     "PowerToys.ManagedCommon.pdb",
                     "PowerToys.Settings.UI.Lib.pdb",
                     "Wox.Infrastructure.pdb",
-                    "Wox.Plugin.pdb"
+                    "Wox.Plugin.pdb",
+                    "Microsoft.Extensions.Logging.Abstractions.pdb"
                   )
 
                   foreach ($file in $unnecessaryFiles) {
-                    $filePath = "$artifactDir/Bored/$file"
-                    if (Test-Path $filePath) {
-                      Remove-Item $filePath -Force
-                    }
+                    Get-ChildItem -Path "$artifactDir/Bored" -Filter $file -Recurse -ErrorAction SilentlyContinue | 
+                      Remove-Item -Force -ErrorAction SilentlyContinue
                   }
               shell: pwsh
 
