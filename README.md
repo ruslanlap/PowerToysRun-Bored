@@ -12,7 +12,6 @@ Press `Alt+Space` → `bored quote` → Done! ✨
 [![Latest Release](https://img.shields.io/github/v/release/ruslanlap/PowerToysRun-Bored?style=for-the-badge&logo=github&color=b5ff3f)](https://github.com/ruslanlap/PowerToysRun-Bored/releases/latest)
 [![Total Downloads](https://img.shields.io/github/downloads/ruslanlap/PowerToysRun-Bored/total?style=for-the-badge&logo=download&color=b5ff3f)](https://github.com/ruslanlap/PowerToysRun-Bored/releases/latest)
 [![GitHub Stars](https://img.shields.io/github/stars/ruslanlap/PowerToysRun-Bored?style=for-the-badge&logo=star&color=b5ff3f)](https://github.com/ruslanlap/PowerToysRun-Bored/stargazers)
-[![Awesome PowerToys](https://awesome.re/mentioned-badge-flat.svg)](https://github.com/hlaueriksson/awesome-powertoys-run-plugins)
 
 </div>
 
