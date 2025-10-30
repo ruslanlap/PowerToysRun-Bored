@@ -11,5 +11,5 @@
   "ExecuteFileName": "Community.PowerToys.Run.Plugin.Bored.dll",
   "IcoPathDark": "Images\\bored.dark.png",
   "IcoPathLight": "Images\\bored.light.png",
-  "DynamicLoading": true
+  "DynamicLoading": false
 }
