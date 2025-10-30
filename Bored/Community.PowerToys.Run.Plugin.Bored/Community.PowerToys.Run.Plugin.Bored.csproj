@@ -2,28 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0-windows10.0.22621.0</TargetFramework>
-    <LangVersion>12.0</LangVersion>
     <UseWPF>true</UseWPF>
     <Platforms>x64;ARM64</Platforms>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <PlatformTarget>$(Platform)</PlatformTarget>
     <Nullable>enable</Nullable>
-    <ImplicitUsings>disable</ImplicitUsings>
-    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
-    <PublishSingleFile>false</PublishSingleFile>
-    <PrivateAssets>None</PrivateAssets>
-    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
-    <RootNamespace>Community.PowerToys.Run.Plugin.Bored</RootNamespace>
-    <AssemblyName>Community.PowerToys.Run.Plugin.Bored</AssemblyName>
-    <AssemblyTitle>Community.PowerToys.Run.Plugin.Bored</AssemblyTitle>
-    <AssemblyDescription>PowerToys Run plugin for when you're bored - quotes, jokes, currency exchange, world time, cat facts, dog pictures, and more</AssemblyDescription>
-    <Copyright>Copyright © 2025</Copyright>
-    <AssemblyVersion>1.0.0</AssemblyVersion>
-    <FileVersion>1.0.0</FileVersion>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Community.PowerToys.Run.Plugin.Dependencies" Version="0.93.0" ExcludeAssets="runtime" />
+    <PackageReference Include="Community.PowerToys.Run.Plugin.Dependencies" Version="0.93.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.0">
       <PrivateAssets>none</PrivateAssets>
       <ExcludeAssets>none</ExcludeAssets>
@@ -38,12 +26,31 @@
     <None Include="plugin.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Images\*.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="README.md">
+    <None Include="Images/*.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+  <!-- Remove excluded DLLs after build (provided by PowerToys) -->
+  <Target Name="RemoveExcludedDlls" AfterTargets="Build">
+    <ItemGroup>
+      <FilesToRemove Include="$(OutDir)**\PowerToys.Common.UI.dll" />
+      <FilesToRemove Include="$(OutDir)**\PowerToys.ManagedCommon.dll" />
+      <FilesToRemove Include="$(OutDir)**\PowerToys.Settings.UI.Lib.dll" />
+      <FilesToRemove Include="$(OutDir)**\Wox.Infrastructure.dll" />
+      <FilesToRemove Include="$(OutDir)**\Wox.Plugin.dll" />
+      <FilesToRemove Include="$(OutDir)**\Microsoft.Extensions.Logging.Abstractions.dll" />
+      <FilesToRemove Include="$(OutDir)**\PowerToys.Common.UI.pdb" />
+      <FilesToRemove Include="$(OutDir)**\PowerToys.ManagedCommon.pdb" />
+      <FilesToRemove Include="$(OutDir)**\PowerToys.Settings.UI.Lib.pdb" />
+      <FilesToRemove Include="$(OutDir)**\Wox.Infrastructure.pdb" />
+      <FilesToRemove Include="$(OutDir)**\Wox.Plugin.pdb" />
+      <FilesToRemove Include="$(OutDir)**\Microsoft.Extensions.Logging.Abstractions.pdb" />
+      <FilesToRemove Include="$(OutDir)**\Microsoft.Windows.SDK.NET.dll" />
+      <FilesToRemove Include="$(OutDir)**\WinRT.Runtime.dll" />
+    </ItemGroup>
+    <Delete Files="@(FilesToRemove)" ContinueOnError="true" />
+    <Message Text="Removed excluded PowerToys dependencies from output" Importance="high" />
+  </Target>
 
 </Project>
