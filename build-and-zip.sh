@@ -32,7 +32,7 @@ dotnet publish "$PROJECT_PATH" -c Release -r win-arm64 --self-contained false
 # Package x64
 echo "📦 Packaging x64..."
 PUBLISH_X64="./Bored/Community.PowerToys.Run.Plugin.Bored/bin/Release/net9.0-windows10.0.22621.0/win-x64/publish"
-DEST_X64="./Bored/Publish/x64"
+DEST_X64="./Bored/Publish/x64/$PLUGIN_NAME"
 ZIP_X64="./${PLUGIN_NAME}-${VERSION}-x64.zip"
 
 rm -rf "$DEST_X64"
@@ -46,14 +46,13 @@ for dep in $DEPENDENCIES_TO_EXCLUDE; do
     find "$DEST_X64" -name "$dep" -delete 2>/dev/null || true
 done
 
-
-# Create zip
-(cd "$DEST_X64" && zip -r "../../$(basename "$ZIP_X64")" .)
+# Create zip with Bored folder inside
+(cd "./Bored/Publish/x64" && zip -r "../../${PLUGIN_NAME}-${VERSION}-x64.zip" "$PLUGIN_NAME")
 
 # Package ARM64
 echo "📦 Packaging ARM64..."
 PUBLISH_ARM64="./Bored/Community.PowerToys.Run.Plugin.Bored/bin/Release/net9.0-windows10.0.22621.0/win-arm64/publish"
-DEST_ARM64="./Bored/Publish/arm64"
+DEST_ARM64="./Bored/Publish/arm64/$PLUGIN_NAME"
 ZIP_ARM64="./${PLUGIN_NAME}-${VERSION}-arm64.zip"
 
 rm -rf "$DEST_ARM64"
@@ -67,14 +66,8 @@ for dep in $DEPENDENCIES_TO_EXCLUDE; do
     find "$DEST_ARM64" -name "$dep" -delete 2>/dev/null || true
 done
 
-
-
-# Create zip
-(cd "$DEST_ARM64" && zip -r "../../$(basename "$ZIP_ARM64")" .)
-
-# Move zips to root
-mv "$DEST_X64/../$(basename "$ZIP_X64")" .
-mv "$DEST_ARM64/../$(basename "$ZIP_ARM64")" .
+# Create zip with Bored folder inside
+(cd "./Bored/Publish/arm64" && zip -r "../../${PLUGIN_NAME}-${VERSION}-arm64.zip" "$PLUGIN_NAME")
 
 echo "✅ Done! Created:"
 echo " - $ZIP_X64"
