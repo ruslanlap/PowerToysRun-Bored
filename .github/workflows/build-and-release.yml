@@ -1,4 +1,4 @@
-name: Build and Release Radio Plugin
+name: Build and Release Bored Plugin
 
 on:
     push:
@@ -48,11 +48,11 @@ jobs:
 
             # Restore dependencies separately for better caching
             - name: Restore dependencies
-              run: dotnet restore Radio/Radio.sln -p:Platform="${{ matrix.platform }}"
+              run: dotnet restore Bored/Bored.sln -p:Platform="${{ matrix.platform }}"
 
             # Build with optimized settings
             - name: Build
-              run: dotnet build Radio/Radio.sln -c Release -p:Platform="${{ matrix.platform }}" --no-restore
+              run: dotnet build Bored/Bored.sln -c Release -p:Platform="${{ matrix.platform }}" --no-restore
 
             - name: Get version
               id: get_version
@@ -68,7 +68,7 @@ jobs:
 
             - name: Debug Output
               run: |
-                  Get-ChildItem -Path "Radio" -Recurse -Directory | Where-Object { $_.Name -eq "Release" } | ForEach-Object { Write-Host $_.FullName }
+                  Get-ChildItem -Path "Bored" -Recurse -Directory | Where-Object { $_.Name -eq "Release" } | ForEach-Object { Write-Host $_.FullName }
               shell: pwsh
 
             - name: Create output directory
@@ -77,17 +77,17 @@ jobs:
             - name: Copy build output to artifacts directory
               run: |
                   # Define paths upfront for better performance
-                  $artifactDir = "artifacts/Radio-v${{ steps.get_version.outputs.VERSION }}-${{ matrix.platform }}"
-                  $buildOutput = "Radio/Community.PowerToys.Run.Plugin.Radio/bin/${{ matrix.platform }}/Release"
+                  $artifactDir = "artifacts/Bored-v${{ steps.get_version.outputs.VERSION }}-${{ matrix.platform }}"
+                  $buildOutput = "Bored/Community.PowerToys.Run.Plugin.Bored/bin/${{ matrix.platform }}/Release"
                   $runtimeFolder = "$buildOutput/net9.0-windows10.0.22621.0"
 
                   # Create directories in a single operation
-                  New-Item -ItemType Directory -Force -Path "$artifactDir/Radio"
+                  New-Item -ItemType Directory -Force -Path "$artifactDir/Bored"
 
                   # Fast path: Try direct copy from the expected runtime folder
                   if (Test-Path $runtimeFolder) {
                     Write-Host "Using fast path: Copying from known runtime folder"
-                    Copy-Item -Path "$runtimeFolder/*" -Destination "$artifactDir/Radio" -Recurse -Force
+                    Copy-Item -Path "$runtimeFolder/*" -Destination "$artifactDir/Bored" -Recurse -Force
                   } else {
                     # Fallback: Use optimized search logic
                     Write-Host "Fast path not available, using fallback path"
@@ -95,7 +95,7 @@ jobs:
                       # Check for files directly in the build output directory
                       $files = Get-ChildItem -Path $buildOutput -File
                       if ($files.Count -gt 0) {
-                        Copy-Item -Path "$buildOutput/*" -Destination "$artifactDir/Radio" -Recurse -Force
+                        Copy-Item -Path "$buildOutput/*" -Destination "$artifactDir/Bored" -Recurse -Force
                       } else {
                         # Look for a .NET runtime folder
                         $runtimeFolder = Get-ChildItem -Path $buildOutput -Directory |
@@ -103,12 +103,12 @@ jobs:
                                          Select-Object -First 1 -ExpandProperty FullName
 
                         if ($runtimeFolder) {
-                          Copy-Item -Path "$runtimeFolder/*" -Destination "$artifactDir/Radio" -Recurse -Force
+                          Copy-Item -Path "$runtimeFolder/*" -Destination "$artifactDir/Bored" -Recurse -Force
                         } else {
                           # Last resort: check for any subdirectories
                           $subDir = Get-ChildItem -Path $buildOutput -Directory | Select-Object -First 1 -ExpandProperty FullName
                           if ($subDir) {
-                            Copy-Item -Path "$subDir/*" -Destination "$artifactDir/Radio" -Recurse -Force
+                            Copy-Item -Path "$subDir/*" -Destination "$artifactDir/Bored" -Recurse -Force
                           } else {
                             Write-Error "No files or subdirectories found in build output directory"
                             exit 1
@@ -122,9 +122,9 @@ jobs:
                   }
 
                   # Copy Images folder directly to the destination
-                  $imagesSrc = "Radio/Community.PowerToys.Run.Plugin.Radio/Images"
+                  $imagesSrc = "Bored/Community.PowerToys.Run.Plugin.Bored/Images"
                   if (Test-Path $imagesSrc) {
-                    Copy-Item -Path $imagesSrc -Destination "$artifactDir/Radio/Images" -Recurse -Force
+                    Copy-Item -Path $imagesSrc -Destination "$artifactDir/Bored/Images" -Recurse -Force
                   }
 
                   # Remove unnecessary files in a single operation
@@ -144,7 +144,7 @@ jobs:
                   )
 
                   foreach ($file in $unnecessaryFiles) {
-                    $filePath = "$artifactDir/Radio/$file"
+                    $filePath = "$artifactDir/Bored/$file"
                     if (Test-Path $filePath) {
                       Remove-Item $filePath -Force
                     }
@@ -153,10 +153,10 @@ jobs:
 
             - name: Create ZIP archive
               run: |
-                  $artifactDir = "artifacts/Radio-v${{ steps.get_version.outputs.VERSION }}-${{ matrix.platform }}"
-                  $zipName = "Radio-${{ steps.get_version.outputs.VERSION }}-${{ matrix.platform }}.zip"
-                  # Create ZIP with Radio folder inside
-                  Compress-Archive -Path "$artifactDir/Radio" -DestinationPath "artifacts/$zipName"
+                  $artifactDir = "artifacts/Bored-v${{ steps.get_version.outputs.VERSION }}-${{ matrix.platform }}"
+                  $zipName = "Bored-${{ steps.get_version.outputs.VERSION }}-${{ matrix.platform }}.zip"
+                  # Create ZIP with Bored folder inside
+                  Compress-Archive -Path "$artifactDir/Bored" -DestinationPath "artifacts/$zipName"
               shell: pwsh
 
             - name: Upload build artifacts
@@ -192,16 +192,16 @@ jobs:
                   VERSION="${{ steps.get_version.outputs.VERSION }}"
 
                   # Fast copy with error handling
-                  find downloaded-artifacts -name "Radio-${VERSION}-x64.zip" -exec cp {} release-artifacts/ \;
-                  find downloaded-artifacts -name "Radio-${VERSION}-ARM64.zip" -exec cp {} release-artifacts/ \;
+                  find downloaded-artifacts -name "Bored-${VERSION}-x64.zip" -exec cp {} release-artifacts/ \;
+                  find downloaded-artifacts -name "Bored-${VERSION}-ARM64.zip" -exec cp {} release-artifacts/ \;
 
                   # Verify artifacts were copied
-                  if [ ! -f "release-artifacts/Radio-${VERSION}-x64.zip" ]; then
+                  if [ ! -f "release-artifacts/Bored-${VERSION}-x64.zip" ]; then
                     echo "Error: x64 artifact not found"
                     exit 1
                   fi
 
-                  if [ ! -f "release-artifacts/Radio-${VERSION}-ARM64.zip" ]; then
+                  if [ ! -f "release-artifacts/Bored-${VERSION}-ARM64.zip" ]; then
                     echo "Error: ARM64 artifact not found"
                     exit 1
                   fi
@@ -211,66 +211,71 @@ jobs:
               run: |
                   VERSION="${{ steps.get_version.outputs.VERSION }}"
                   cat > release_notes.md << EOL
-                  # Radio Plugin v${VERSION}
+                  # Bored Plugin v${VERSION}
 
-                  <img src="https://raw.githubusercontent.com/ruslanlap/PowerToysRun-Radio/master/assets/radio_logo.png" alt="Radio Plugin Logo" width="64"/>
-
-                  ## 📻 What's New in v${VERSION}
+                  ## 😴 What's New in v${VERSION}
 
                   ### ✨ Features:
-                  - **Instant Search** - Search 30,000+ radio stations directly from PowerToys Run
-                  - **Smart Search** - Search by station name, city, country, or genre
-                  - **Rich Metadata** - View bitrate, codec, country, and tags for each station
-                  - **High Availability** - Automatic failover with 5+ Radio Browser API mirrors
-                  - **One-Click Playback** - Press Enter to play in your default media player
-                  - **Context Menu** - Copy URL, open in browser, or add to favorites
-                  - **Favorites Support** - Save your favorite stations for quick access
+                  - **Random Quotes** - Get inspirational quotes directly from PowerToys Run
+                  - **Random Jokes** - Fetch funny jokes to brighten your day
+                  - **Currency Exchange** - Convert between 160+ currencies instantly
+                  - **World Time** - Look up current time in any timezone
+                  - **Cat Facts** - Learn interesting facts about cats
+                  - **Dog Pictures** - View random dog images
+                  - **Text Transformations** - Transform text (upper, lower, reverse, etc.)
 
                   ### 🔧 Technical Details:
                   - Built with .NET 9.0 targeting Windows 10.0.22621.0+
-                  - Radio Browser API with multi-mirror failover support
+                  - Multiple free APIs (open.er-api.com, worldtimeapi.org, catfact.ninja, dog.ceo, etc.)
                   - Theme-aware UI with automatic light/dark mode support
                   - Comprehensive logging for diagnostics
                   - Multi-platform builds (x64 and ARM64)
+                  - All dependencies included with CopyLocalLockFileAssemblies
 
                   ## 📥 Installation
 
                   1. **Download** the ZIP file for your platform (x64 or ARM64)
-                  2. **Extract** to \`%LOCALAPPDATA%\\Microsoft\\PowerToys\\PowerToys Run\\Plugins\\Radio\\\`
+                  2. **Extract** to \`%LOCALAPPDATA%\\Microsoft\\PowerToys\\PowerToys Run\\Plugins\\Bored\\\`
 
                      Full path example:
                      \`\`\`
-                     C:\\Users\\YourName\\AppData\\Local\\Microsoft\\PowerToys\\PowerToys Run\\Plugins\\Radio\\
+                     C:\\Users\\YourName\\AppData\\Local\\Microsoft\\PowerToys\\PowerToys Run\\Plugins\\Bored\\
                      \`\`\`
                   3. **Restart PowerToys** (Right-click tray icon → Exit → Start again)
-                  4. **Try it!** Press \`Alt+Space\`, type \`radio london\`
+                  4. **Try it!** Press \`Alt+Space\`, type \`bored quote\`
 
                   ## 📊 Usage Examples
 
                   \`\`\`
-                  radio lviv                     # 🇺🇦 Ukrainian stations
-                  radio bbc                      # 🌍 BBC Radio
-                  radio jazz                     # 🎵 Jazz stations
-                  radio france                   # 🇫🇷 French stations
-                  radio new york                 # 🗽 New York stations
-                  radio classical                # 🎻 Classical music
+                  bored quote                      # 💭 Get random inspirational quote
+                  bored joke                       # 😄 Get random joke
+                  bored exchange USD EUR 100        # 💱 Convert 100 USD to EUR
+                  bored time Europe/London          # 🕒 Get time in London
+                  bored catfact                    # 🐱 Get random cat fact
+                  bored dog                        # 🐕 View random dog picture
+                  bored text upper Hello            # 📝 Transform text to uppercase
                   \`\`\`
 
-                  ### Actions:
-                  - **Enter** - Play station in default media player
-                  - **Ctrl+C** - Copy stream URL to clipboard
-                  - **Right-click** - Show context menu with more options
+                  ### Commands:
+                  - **quote** - Fetch a random inspirational quote
+                  - **joke** - Get a random joke
+                  - **exchange <from> <to> [amount]** - Convert currencies (e.g., exchange USD EUR 100)
+                  - **time <timezone>** - Get current time (e.g., time Europe/London)
+                  - **catfact** - Get a random cat fact
+                  - **dog** - View a random dog picture
+                  - **text <command> <text>** - Transform text (upper, lower, reverse, etc.)
 
                   ## 🔒 Security & Privacy
 
-                  - ✅ 100% local storage
+                  - ✅ No API keys required
+                  - ✅ Free open APIs only
                   - ✅ No tracking or telemetry
                   - ✅ Open source code
                   - ✅ Privacy-first design
 
                   ---
 
-                  **Need Help?** [Open an issue](https://github.com/ruslanlap/PowerToysRun-Radio/issues) • [View Documentation](https://github.com/ruslanlap/PowerToysRun-Radio#readme)
+                  **Need Help?** [Open an issue](https://github.com/ruslanlap/PowerToysRun-Bored/issues) • [View Documentation](https://github.com/ruslanlap/PowerToysRun-Bored#readme)
 
                   Made with ❤️ by [ruslanlap](https://github.com/ruslanlap)
                   EOL
@@ -285,32 +290,32 @@ jobs:
 
                   # Generate checksums in parallel
                   {
-                    sha256sum Radio-${VERSION}-x64.zip | tr 'a-f' 'A-F' > Radio-${VERSION}-x64.zip.sha256 &
-                    sha256sum Radio-${VERSION}-ARM64.zip | tr 'a-f' 'A-F' > Radio-${VERSION}-ARM64.zip.sha256 &
+                    sha256sum Bored-${VERSION}-x64.zip | tr 'a-f' 'A-F' > Bored-${VERSION}-x64.zip.sha256 &
+                    sha256sum Bored-${VERSION}-ARM64.zip | tr 'a-f' 'A-F' > Bored-${VERSION}-ARM64.zip.sha256 &
                     wait
                   }
 
                   # Create combined checksums file efficiently
                   {
-                    echo "SHA256 Checksums for Radio Plugin v${VERSION}"
+                    echo "SHA256 Checksums for Bored Plugin v${VERSION}"
                     echo "Generated on: $(date -u)"
                     echo ""
-                    cat Radio-${VERSION}-x64.zip.sha256
-                    cat Radio-${VERSION}-ARM64.zip.sha256
+                    cat Bored-${VERSION}-x64.zip.sha256
+                    cat Bored-${VERSION}-ARM64.zip.sha256
                   } > checksums.txt
 
             - name: Create Release
               uses: softprops/action-gh-release@v1
               with:
-                  name: PowerToysRun-Radio v${{ steps.get_version.outputs.VERSION }}
+                  name: PowerToysRun-Bored v${{ steps.get_version.outputs.VERSION }}
                   body: ${{ steps.release_notes.outputs.RELEASE_NOTES }}
                   draft: false
                   prerelease: false
                   files: |
-                      release-artifacts/Radio-${{ steps.get_version.outputs.VERSION }}-x64.zip
-                      release-artifacts/Radio-${{ steps.get_version.outputs.VERSION }}-ARM64.zip
-                      release-artifacts/Radio-${{ steps.get_version.outputs.VERSION }}-x64.zip.sha256
-                      release-artifacts/Radio-${{ steps.get_version.outputs.VERSION }}-ARM64.zip.sha256
+                      release-artifacts/Bored-${{ steps.get_version.outputs.VERSION }}-x64.zip
+                      release-artifacts/Bored-${{ steps.get_version.outputs.VERSION }}-ARM64.zip
+                      release-artifacts/Bored-${{ steps.get_version.outputs.VERSION }}-x64.zip.sha256
+                      release-artifacts/Bored-${{ steps.get_version.outputs.VERSION }}-ARM64.zip.sha256
                       release-artifacts/checksums.txt
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
