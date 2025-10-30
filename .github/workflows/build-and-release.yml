@@ -23,7 +23,11 @@ jobs:
         runs-on: windows-latest
         strategy:
             matrix:
-                platform: [x64, ARM64]
+                include:
+                    - platform: x64
+                      runtime: win-x64
+                    - platform: ARM64
+                      runtime: win-arm64
             fail-fast: false # Continue with other platforms if one fails
 
         steps:
@@ -48,11 +52,28 @@ jobs:
 
             # Restore dependencies separately for better caching
             - name: Restore dependencies
-              run: dotnet restore Bored/Bored.sln -p:Platform="${{ matrix.platform }}"
+              run: dotnet restore Bored/Bored.sln -p:Platform="${{ matrix.platform }}" -r ${{ matrix.runtime }}
 
-            # Build with optimized settings
-            - name: Build
-              run: dotnet build Bored/Bored.sln -c Release -p:Platform="${{ matrix.platform }}" --no-restore
+            # Publish trimmed output per architecture
+            - name: Publish plugin
+              shell: pwsh
+              run: |
+                  $runtime = "${{ matrix.runtime }}"
+                  $platform = "${{ matrix.platform }}"
+                  $publishRoot = "Bored/publish"
+                  $publishOutput = Join-Path $publishRoot $runtime
+
+                  if (Test-Path $publishOutput) {
+                    Remove-Item -Path $publishOutput -Recurse -Force
+                  }
+
+                  dotnet publish "Bored/Community.PowerToys.Run.Plugin.Bored/Community.PowerToys.Run.Plugin.Bored.csproj" `
+                    -c Release `
+                    -p:Platform=$platform `
+                    -r $runtime `
+                    --self-contained false `
+                    --no-restore `
+                    --output $publishOutput
 
             - name: Get version
               id: get_version
@@ -74,58 +95,22 @@ jobs:
             - name: Create output directory
               run: mkdir -p artifacts
 
-            - name: Copy build output to artifacts directory
+            - name: Copy publish output to artifacts directory
               run: |
                   # Define paths upfront for better performance
                   $artifactDir = "artifacts/Bored-v${{ steps.get_version.outputs.VERSION }}-${{ matrix.platform }}"
-                  $buildOutput = "Bored/Community.PowerToys.Run.Plugin.Bored/bin/${{ matrix.platform }}/Release"
-                  $runtimeFolder = "$buildOutput/net9.0-windows10.0.22621.0"
+                  $publishOutput = "Bored/publish/${{ matrix.runtime }}"
+
+                  if (-not (Test-Path $publishOutput)) {
+                    Write-Error "Publish output not found at $publishOutput"
+                    Get-ChildItem -Path "Bored/publish" -Recurse -Force -ErrorAction SilentlyContinue
+                    exit 1
+                  }
 
                   # Create directories in a single operation
-                  New-Item -ItemType Directory -Force -Path "$artifactDir/Bored"
+                  New-Item -ItemType Directory -Force -Path "$artifactDir/Bored" | Out-Null
 
-                  # Fast path: Try direct copy from the expected runtime folder
-                  if (Test-Path $runtimeFolder) {
-                    Write-Host "Using fast path: Copying from known runtime folder"
-                    Copy-Item -Path "$runtimeFolder/*" -Destination "$artifactDir/Bored" -Recurse -Force
-                  } else {
-                    # Fallback: Use optimized search logic
-                    Write-Host "Fast path not available, using fallback path"
-                    if (Test-Path $buildOutput) {
-                      # Check for files directly in the build output directory
-                      $files = Get-ChildItem -Path $buildOutput -File
-                      if ($files.Count -gt 0) {
-                        Copy-Item -Path "$buildOutput/*" -Destination "$artifactDir/Bored" -Recurse -Force
-                      } else {
-                        # Look for a .NET runtime folder
-                        $runtimeFolder = Get-ChildItem -Path $buildOutput -Directory |
-                                         Where-Object { $_.Name -like "net*-windows*" } |
-                                         Select-Object -First 1 -ExpandProperty FullName
-
-                        if ($runtimeFolder) {
-                          Copy-Item -Path "$runtimeFolder/*" -Destination "$artifactDir/Bored" -Recurse -Force
-                        } else {
-                          # Last resort: check for any subdirectories
-                          $subDir = Get-ChildItem -Path $buildOutput -Directory | Select-Object -First 1 -ExpandProperty FullName
-                          if ($subDir) {
-                            Copy-Item -Path "$subDir/*" -Destination "$artifactDir/Bored" -Recurse -Force
-                          } else {
-                            Write-Error "No files or subdirectories found in build output directory"
-                            exit 1
-                          }
-                        }
-                      }
-                    } else {
-                      Write-Error "Build output directory not found at $buildOutput"
-                      exit 1
-                    }
-                  }
-
-                  # Copy Images folder directly to the destination
-                  $imagesSrc = "Bored/Community.PowerToys.Run.Plugin.Bored/Images"
-                  if (Test-Path $imagesSrc) {
-                    Copy-Item -Path $imagesSrc -Destination "$artifactDir/Bored/Images" -Recurse -Force
-                  }
+                  Copy-Item -Path (Join-Path $publishOutput '*') -Destination "$artifactDir/Bored" -Recurse -Force
 
                   # Remove unnecessary files recursively
                   $unnecessaryFiles = @(

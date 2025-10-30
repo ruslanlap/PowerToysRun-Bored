@@ -6,6 +6,7 @@
   "Author": "ruslanlap",
   "Version": "1.0.0",
   "Language": "csharp",
+  "User": "ruslanlap",
   "Website": "https://github.com/ruslanlap/PowerToysRun-Bored",
   "ExecuteFileName": "Community.PowerToys.Run.Plugin.Bored.dll",
   "IcoPathDark": "Images\\bored.dark.png",
