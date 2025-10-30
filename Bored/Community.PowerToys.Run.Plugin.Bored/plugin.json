@@ -1,0 +1,14 @@
+{
+  "ID": "3548EB2720CF46509A8BA9044F970447",
+  "ActionKeyword": "bored",
+  "IsGlobal": false,
+  "Name": "Bored",
+  "Author": "ruslanlap",
+  "Version": "1.0.0",
+  "Language": "csharp",
+  "Website": "https://github.com/ruslanlap/PowerToysRun-Bored",
+  "ExecuteFileName": "Community.PowerToys.Run.Plugin.Bored.dll",
+  "IcoPathDark": "Images\\bored.dark.png",
+  "IcoPathLight": "Images\\bored.light.png",
+  "DynamicLoading": true
+}
